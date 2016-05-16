@@ -137,6 +137,14 @@ std::string PluginPlayerAPI::getPluginVersion()
 	return pluginVersion;
 }
 
+std::string PluginPlayerAPI::getResolution()
+{
+	getPlugin()->m_rtspClient.m_xt_height;
+	char resolution[40]={0};		
+	sprintf(resolution,"%d,%d",getPlugin()->m_rtspClient.m_xt_width,getPlugin()->m_rtspClient.m_xt_height);		
+	return resolution;
+}
+
 void PluginPlayerAPI::set_m_szRtspURL(const std::string& val)
 {
 	m_szRtspURL = val;
@@ -285,6 +293,7 @@ std::vector<std::string> split(std::string str,std::string pattern)
 //************************************
 void PluginPlayerAPI::set_Areas(FB::VariantList& areass)
 {
+	//外破视频，播放就崩溃，注释下面所有代码
 	for(int i=0;i < areass.size();i++)
 	{
 		std::string area=areass[i].convert_cast<std::string>();

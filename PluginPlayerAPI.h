@@ -59,6 +59,7 @@ public:
 		registerMethod  ("beforeSetURL",         make_method  (this, &PluginPlayerAPI::BeforeSetURL));////是否在设置url之前的10s		
 		registerMethod  ("refreshTips",         make_method  (this, &PluginPlayerAPI::RefreshTips));//刷新提示信息，最小化或改变浏览器大小会导致提示信息丢失，通过刷新提示来重现提示
 		registerMethod  ("showMessage",         make_method  (this, &PluginPlayerAPI::ShowMessage));//显示信息
+		registerMethod  ("getResolution",         make_method  (this, &PluginPlayerAPI::getResolution));//返回分辨率
 
         
         // Read-write property
@@ -122,6 +123,7 @@ public:
 	void ShowBullseye(boolean showBullseye);
 	void setPole(const std::string& pole);
 	std::string getPluginVersion();
+	std::string getResolution();
 
 private:
     PluginPlayerWeakPtr m_plugin;
